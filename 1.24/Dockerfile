@@ -1,4 +1,5 @@
 FROM php:5.6-apache
+COPY php/php.ini /usr/local/etc/php/
 MAINTAINER Synctree App Force <appforce+docker@synctree.com>
 
 ENV MEDIAWIKI_VERSION 1.24
