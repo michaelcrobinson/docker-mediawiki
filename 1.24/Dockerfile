@@ -16,7 +16,7 @@ RUN set -x; \
     && apt-get purge -y --auto-remove g++ libicu-dev \
     && rm -rf /var/lib/apt/lists/*
 
-RUN docker-php-ext-install mysqli opcache mail net_smtp
+RUN docker-php-ext-install mysqli opcache
 
 RUN set -x; \
     apt-get update \
@@ -24,6 +24,9 @@ RUN set -x; \
     && rm -rf /var/lib/apt/lists/*
 
 RUN a2enmod rewrite
+
+RUN pear install mail \
+    && pear install net_smtp
 
 # https://www.mediawiki.org/keys/keys.txt
 RUN gpg --keyserver pool.sks-keyservers.net --recv-keys \
